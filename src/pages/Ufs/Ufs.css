@@ -1,0 +1,25 @@
+table, th, td {
+    border: 1px solid rgba(231, 228, 228, 0.952);
+    border-collapse: collapse;
+}
+
+th {
+    color: chocolate;
+    padding: 10px;
+}
+
+td {
+    color:blanchedalmond;
+    padding-left: 10px;
+    padding-right: 10px;
+    align-items: center;
+}
+
+#ufid {
+    text-align: right;
+}
+
+#ufname {
+    text-align: left;
+}
+
