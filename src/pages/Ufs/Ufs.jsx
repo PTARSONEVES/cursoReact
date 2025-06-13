@@ -4,18 +4,6 @@ import { useFetch } from '../../hooks/useFetch';
 
 import './Ufs.css';
 
-function htmlUrl(munid, ufid) {
-  console.log('Munid antes:', munid);
-  console.log('Ufid antes', ufid);
-  localStorage.removeItem('munid');
-  localStorage.removeItem('ufid');
-  localStorage.setItem('munid', munid);
-  localStorage.setItem('ufid', ufid);
-  console.log('Id depois', munid);
-  console.log('ufid Depois: ',ufid);
-  return [munid, ufid];
-};
-
 const Ufs = () => {
     const url = 'http://localhost:3001/ufs';
     const { data: items, loading, error } = useFetch(url);
@@ -42,9 +30,7 @@ const Ufs = () => {
               <td id="ufname">{uf.ufname}</td>
               <td>{uf.Tbspai.paisname}</td>
               <td>{uf.Tbspai.Tbscontinente.namecontinente}</td>
-              {/*<td><Link to='/municipios'>Detalhes</Link></td>*/}
-              {/*<td><a href="javascript:void(0);" onClick={htmlUrl(0,uf.id)}></a><Link to='/municipios'>Detalhes</Link> </td>*/}
-              <td><button onClick={htmlUrl(0,uf.id)}><Link to='/municipios'>Detalhe</Link></button></td>
+              <td><Link to={'/municipios/0/'+uf.id.toString()}>Detalhes</Link></td>
             </tr>
           ))}
         </table>

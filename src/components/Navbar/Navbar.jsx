@@ -7,7 +7,7 @@ const Navbar = () => {
       <NavLink to='/'>Home</NavLink>
       <NavLink to='/about'>Sobre</NavLink>
       <NavLink to='/ufs'>Unidades da Federação</NavLink>
-      <NavLink to='/municipios'>Municípios</NavLink>
+      <NavLink to='/municipios/0/0'>Municípios</NavLink>
     </nav>
   );
 }

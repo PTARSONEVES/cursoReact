@@ -1,4 +1,4 @@
-//import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 //import { useState } from "react";
 
 import { useFetch } from '../../hooks/useFetch';
@@ -8,7 +8,8 @@ import './Municipios.css';
 
 const Municipios = () => {
 
-
+    const {munid, ufid} = useParams();
+/*
     let ufid = 0;
     let munid = 0;
     if (localStorage.getItem('munid')) {
@@ -19,8 +20,11 @@ const Municipios = () => {
     };
 
     console.log('ufid: ',localStorage.getItem('ufid'));
-
+*/
+    console.log('munid: ',munid);
+    console.log('ufid: ',ufid);
     const url = 'http://localhost:3001/municipios/'+munid+'/'+ufid;
+
     const { data: items, loading, error } = useFetch(url);
 
   return (

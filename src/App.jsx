@@ -24,7 +24,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
           <Route path='/ufs' element={<Ufs />} />
-          <Route path='/municipios' element={<Municipios />} />
+          <Route path='/municipios/:munid/:ufid' element={<Municipios />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>
