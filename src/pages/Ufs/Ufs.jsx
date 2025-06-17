@@ -29,7 +29,7 @@ const Ufs = () => {
               <td id="ufname">{uf.ufname}</td>
               <td>{uf.Tbspai.paisname}</td>
               <td>{uf.Tbspai.Tbscontinente.namecontinente}</td>
-              <td><Link to={'/municipios/0/'+uf.id.toString()}>Detalhes</Link></td>
+              <td><Link to={'/municipios/0/'+uf.id.toString()}>Municípios</Link></td>
             </tr>
           ))}
         </table>
