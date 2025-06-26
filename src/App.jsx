@@ -36,11 +36,11 @@ function App() {
           <Route path='/iss' element={<IssItems />} />
           <Route path='/iss/subitem/:itemid' element={<IssSubitems />} />
           <Route path='/iss/subitem/dnac/:itemid/:subitemid' element={<IssDnacs />} />
-          <Route path='/cnae/secao/0' element={<SecaoItems />} />
-          <Route path='/cnae/divisao/0' element={<DivisaoItems />} />
-          <Route path='/cnae/grupo/0' element={<GrupoItems />} />
-          <Route path='/cnae/classe/0' element={<ClasseItems />} />
-          <Route path='/cnae/subclasse/0' element={<SubclasseItems />} />
+          <Route path='/cnae/secao/:secaoid' element={<SecaoItems />} />
+          <Route path='/cnae/divisao/:divisaoid/:secaoid' element={<DivisaoItems />} />
+          <Route path='/cnae/grupo/:grupoid/:secaoid/:divisaoid' element={<GrupoItems />} />
+          <Route path='/cnae/c/classe/:classeid/:secaoid/:divisaoid/:grupoid' element={<ClasseItems />} />
+          <Route path='/cnae/subclasse/:subclasseid/:secaoid/:divisaoid/:grupoid/:classeid' element={<SubclasseItems />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>

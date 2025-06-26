@@ -1,15 +1,17 @@
+import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useFetch } from '../../../hooks/useFetch';
 
 import '../Cnae.css';
 
 const SubclasseItems = () => {
-    const url = 'http://localhost:3001/cnae/subclasse/0';
-    const { data: items, loading, error } = useFetch(url);
+  const {subclasseid,classeid, secaoid, divisaoid, grupoid} = useParams();
+  const url = 'http://localhost:3001/cnae/subclasse/'+subclasseid+'/'+secaoid+'/'+divisaoid+'/'+grupoid+'/'+classeid;
+  const { data: items, loading, error } = useFetch(url);
   return (
     <>
       <div className="App">
-        <h1>CNAE - Lista de Classes</h1>
+        <h1>CNAE - Lista de Subclasses</h1>
         {loading && <p>carregando dados...</p>}
         {error && <p>{error}</p>}
         <table>

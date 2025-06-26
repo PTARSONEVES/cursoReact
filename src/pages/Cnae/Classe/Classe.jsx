@@ -1,10 +1,12 @@
+import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useFetch } from '../../../hooks/useFetch';
 
 import '../Cnae.css';
 
 const Classetems = () => {
-    const url = 'http://localhost:3001/cnae/Classe/0';
+    const {classeid, secaoid, divisaoid, grupoid} = useParams();
+    const url = 'http://localhost:3001/cnae/c/classe/'+classeid+'/'+secaoid+'/'+divisaoid+'/'+grupoid;
     const { data: items, loading, error } = useFetch(url);
   return (
     <>
@@ -23,8 +25,8 @@ const Classetems = () => {
               <td id="tribid">{item.id}</td>
               <td>{item.codclasse}</td>
               <td id="tribname">{item.descrclasse}</td>
-              <td><Link to={'/cnae/subclasse/0'}>Subclasse</Link></td>
-              {/*<td><Link to={'/iss/subitem/'+item.id.toString()}>Detalhes</Link></td>*/}
+              {/*<td><Link to={'/cnae/subclasse/0'}>Subclasse</Link></td>*/}
+              <td><Link to={'/cnae/subclasse/0/'+item.secaoid.toString()+'/'+item.divisaoid.toString()+'/'+item.grupoid.toString()+'/'+item.id.toString()}>Subclasse</Link></td>
             </tr>
           ))}
         </table>

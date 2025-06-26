@@ -1,10 +1,12 @@
+import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useFetch } from '../../../hooks/useFetch';
 
 import '../Cnae.css';
 
 const SecaoItems = () => {
-    const url = 'http://localhost:3001/cnae/secao/0';
+    const {secaoid} = useParams()
+    const url = 'http://localhost:3001/cnae/secao/'+secaoid;
     const { data: items, loading, error } = useFetch(url);
   return (
     <>
@@ -23,8 +25,7 @@ const SecaoItems = () => {
               <td id="tribid">{item.id}</td>
               <td>{item.codsecao}</td>
               <td id="tribname">{item.descrsecao}</td>
-              <td><Link to={'/cnae/divisao/0'}>Divisão</Link></td>
-              {/*<td><Link to={'/cnae/divisao/0'+item.id.toString()}>Divisão</Link></td>*/}
+              <td><Link to={'/cnae/divisao/0/'+item.id.toString()}>Divisão</Link></td>
             </tr>
           ))}
         </table>
