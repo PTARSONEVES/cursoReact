@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useFetch } from '../../../hooks/useFetch';
 
-import '../Cnae.css';
+import styles from '../Cnae.module.css';
 
 const SecaoItems = () => {
     const {secaoid} = useParams()
@@ -10,11 +10,11 @@ const SecaoItems = () => {
     const { data: items, loading, error } = useFetch(url);
   return (
     <>
-      <div className="App">
+      <div className={styles.cnae}>
         <h1>CNAE - Lista de Seções</h1>
         {loading && <p>carregando dados...</p>}
         {error && <p>{error}</p>}
-        <table>
+        <table className={styles.tblsecao}>
           <tr>
             <th>ID</th>
             <th>CÓDIGO</th>
@@ -22,9 +22,9 @@ const SecaoItems = () => {
           </tr>
           {items && items.map((item) => (
             <tr key={item.id}>
-              <td id="tribid">{item.id}</td>
+              <td className={styles.tribid}>{item.id}</td>
               <td>{item.codsecao}</td>
-              <td id="tribname">{item.descrsecao}</td>
+              <td className={styles.tribname}>{item.descrsecao}</td>
               <td><Link to={'/cnae/divisao/0/'+item.id.toString()}>Divisão</Link></td>
             </tr>
           ))}

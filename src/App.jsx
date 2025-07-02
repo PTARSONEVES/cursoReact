@@ -19,7 +19,7 @@ import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 
 // Componentes
-import Navbar from './components/Navbar/Navbar';
+import Navbase from './components/Navbar/Navbar';
 import DivisaoItems from './pages/Cnae/Divisao/DIvisao';
 import GrupoItems from './pages/Cnae/Grupo/Grupo';
 import ClasseItems from './pages/Cnae/Classe/Classe';
@@ -30,7 +30,7 @@ function App() {
   return (
     <div className='App'>
       <BrowserRouter>
-        <Navbar />
+        <Navbase />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />

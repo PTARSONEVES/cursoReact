@@ -1,25 +1,37 @@
-table, th, td {
+.cnae {
+    text-align: center;
+}
+.cnae table, th, td {
+    margin-top: 2%;
     border: 1px solid rgba(231, 228, 228, 0.952);
     border-collapse: collapse;
 }
 
-th {
+.cnae th {
     color: chocolate;
     padding: 10px;
 }
 
-td {
+.cnae td {
     color:blanchedalmond;
     padding-left: 10px;
     padding-right: 10px;
     align-items: center;
 }
 
-#issid {
+.tblsecao {
+    margin-left: 25%;
+}
+
+.tbldivisao, .tblgrupo, .tblclasse, .tblsubclasse {
+    margin-left: 15%;
+}
+
+.tribid {
     text-align: right;
 }
 
-#issname {
+.tribname {
     text-align: left;
 }
 

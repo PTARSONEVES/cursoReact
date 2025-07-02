@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useFetch } from '../../../hooks/useFetch';
 
-import '../Cnae.css';
+import styles from '../Cnae.module.css';
 
 const SubclasseItems = () => {
   const {subclasseid,classeid, secaoid, divisaoid, grupoid} = useParams();
@@ -10,11 +10,11 @@ const SubclasseItems = () => {
   const { data: items, loading, error } = useFetch(url);
   return (
     <>
-      <div className="App">
+      <div className={styles.cnae}>
         <h1>CNAE - Lista de Subclasses</h1>
         {loading && <p>carregando dados...</p>}
         {error && <p>{error}</p>}
-        <table>
+        <table className={styles.tblsubclasse}>
           <tr>
             <th>ID</th>
             <th>CÓDIGO</th>
@@ -22,10 +22,9 @@ const SubclasseItems = () => {
           </tr>
           {items && items.map((item) => (
             <tr key={item.id}>
-              <td id="tribid">{item.id}</td>
+              <td className={styles.tribid}>{item.id}</td>
               <td>{item.codsubclasse}</td>
-              <td id="tribname">{item.descrsubclasse}</td>
-              {/*<td><Link to={'/iss/subitem/'+item.id.toString()}>Detalhes</Link></td>*/}
+              <td className={styles.tribname}>{item.descrsubclasse}</td>
             </tr>
           ))}
         </table>

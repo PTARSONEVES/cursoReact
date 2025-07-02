@@ -1,7 +1,8 @@
 .register {
     text-align: center;
+    margin-top: 5%;
 }
 
-.register p {
+.register p, h1 {
     color: bisque;
 }

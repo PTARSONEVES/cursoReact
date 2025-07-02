@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useFetch } from '../../../hooks/useFetch';
 
-import '../Cnae.css';
+import styles from '../Cnae.module.css';
 
 const Grupotems = () => {
   const {grupoid, secaoid, divisaoid} = useParams();
@@ -10,11 +10,11 @@ const Grupotems = () => {
     const { data: items, loading, error } = useFetch(url);
   return (
     <>
-      <div className="App">
+      <div className={styles.cnae}>
         <h1>CNAE - Lista de Grupos</h1>
         {loading && <p>carregando dados...</p>}
         {error && <p>{error}</p>}
-        <table>
+        <table className={styles.tblgrupo}>
           <tr>
             <th>ID</th>
             <th>CÓDIGO</th>
@@ -22,10 +22,9 @@ const Grupotems = () => {
           </tr>
           {items && items.map((item) => (
             <tr key={item.id}>
-              <td id="tribid">{item.id}</td>
+              <td className={styles.tribid}>{item.id}</td>
               <td>{item.codgrupo}</td>
-              <td id="tribname">{item.descrgrupo}</td>
-              {/*<td><Link to={'/cnae/classe/0'}>Classe</Link></td>*/}
+              <td className={styles.tribname}>{item.descrgrupo}</td>
               <td><Link to={'/cnae/c/classe/0/'+item.secaoid.toString()+'/'+item.divisaoid.toString()+'/'+item.id.toString()}>Classe</Link></td>
             </tr>
           ))}

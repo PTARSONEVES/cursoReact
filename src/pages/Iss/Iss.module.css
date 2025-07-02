@@ -1,25 +1,41 @@
-table, th, td {
+.iss {
+    text-align: center;
+}
+
+.iss table {
+    margin-top: 2%;
+}
+
+.iss table, th, td {
     border: 1px solid rgba(231, 228, 228, 0.952);
     border-collapse: collapse;
 }
 
-th {
+.iss th{
     color: chocolate;
     padding: 10px;
 }
 
-td {
+.iss td {
     color:blanchedalmond;
     padding-left: 10px;
     padding-right: 10px;
     align-items: center;
 }
 
-#municipioid, #citylaw {
+.tblitems {
+    margin-left: 5%;
+}
+
+.tblsubitems, .tbldnacs {
+    margin-left: 0.2%;
+}
+
+.issid {
     text-align: right;
 }
 
-#municipioname {
+.issname {
     text-align: left;
 }
 

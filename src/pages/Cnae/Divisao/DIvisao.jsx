@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useFetch } from '../../../hooks/useFetch';
 
-import '../Cnae.css';
+import styles from '../Cnae.module.css';
 
 const DivisaoItems = () => {
     const {divisaoid, secaoid} = useParams();
@@ -10,11 +10,11 @@ const DivisaoItems = () => {
     const { data: items, loading, error } = useFetch(url);
   return (
     <>
-      <div className="App">
+      <div className={styles.cnae}>
         <h1>CNAE - Lista de Divisões</h1>
         {loading && <p>carregando dados...</p>}
         {error && <p>{error}</p>}
-        <table>
+        <table className={styles.tbldivisao}>
           <tr>
             <th>ID</th>
             <th>CÓDIGO</th>
@@ -22,11 +22,9 @@ const DivisaoItems = () => {
           </tr>
           {items && items.map((item) => (
             <tr key={item.id}>
-              <td id="tribid">{item.id}</td>
+              <td className={styles.tribid}>{item.id}</td>
               <td>{item.coddivisao}</td>
-              <td id="tribname">{item.descrdivisao}</td>
-              {/*<td><Link to={'/cnae/grupo/0/0'}>Grupo</Link></td>*/}
-              {/*<td><Link to={grupoUrl(item.secaoid,item.id)}>Detalhes</Link></td>*/}
+              <td className={styles.tribname}>{item.descrdivisao}</td>
               <td><Link to={'/cnae/grupo/0/'+item.secaoid.toString()+'/'+item.id.toString()}>Grupo</Link></td>
             </tr>
           ))}

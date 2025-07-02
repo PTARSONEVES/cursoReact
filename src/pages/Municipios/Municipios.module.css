@@ -1,25 +1,33 @@
-table, th, td {
+.municipios {
+    text-align: center;
+}
+
+.municipios table {
+    margin-top: 2%;
+    margin-left: 20%;
+}
+.municipios table, th, td {
     border: 1px solid rgba(231, 228, 228, 0.952);
     border-collapse: collapse;
 }
 
-th {
+.municipios th {
     color: chocolate;
     padding: 10px;
 }
 
-td {
+.municipios td {
     color:blanchedalmond;
     padding-left: 10px;
     padding-right: 10px;
     align-items: center;
 }
 
-#issid {
+.municipioid, .citylaw {
     text-align: right;
 }
 
-#issname {
+.municipioname {
     text-align: left;
 }
 
