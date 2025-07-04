@@ -6,6 +6,15 @@ import styles from  './Municipios.module.css';
 
 const Municipios = () => {
 
+    const convData = (value) => {
+      if(value == null) {
+        return null;
+      } else {
+        let vll = value.toString();
+        return (vll.slice(8,10)+'.'+vll.slice(5,7)+'.'+vll.slice(0,4));
+      }
+    }
+
     const {munid, ufid} = useParams();
     const url = 'http://localhost:3001/municipios/'+munid+'/'+ufid;
 
@@ -37,8 +46,8 @@ const Municipios = () => {
               <td className={styles.municipioname}>{municipio.cityname}</td>
               <td>{municipio.Tbsbruf.uf}</td>
               <td className={styles.citylaw}>{municipio.citylaw}</td>
-              <td className="date">{municipio.datelaw}</td>
-              <td className="date">{municipio.dateinstall}</td>
+              <td>{convData(municipio.datelaw)}</td>
+              <td>{convData(municipio.dateinstall)}</td>
               <td>{municipio.cityddd}</td>
             </tr>
           ))}

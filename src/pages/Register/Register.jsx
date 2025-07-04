@@ -1,6 +1,7 @@
+import { useAuthetication } from '../../hooks/useAuthentication';
 import styles from './Register.module.css';
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 function Register() {
   const [displayName, setDisplayName] = useState('');
@@ -8,8 +9,9 @@ function Register() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
+  const {createUser, error: authError, loading} = useAuthetication();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     setError('');
@@ -23,12 +25,21 @@ function Register() {
     if(password !== confirmPassword) {
       setError('As senhas precisam ser iguais!');
       console.log('erro:',error);
-      return
+      return;
     }
 
-    console.log(user);
+    const res = await createUser(user);
+
+    console.log(res);
 
   };
+  
+  useEffect(() => {
+    if (authError) {
+      setError(authError);
+    }
+  }, [authError]);
+  
   return (
     <div className={styles.register}>
       <h1>Cadastro de Usuário</h1>
@@ -78,7 +89,11 @@ function Register() {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </label>
-        <button className='btn'>Cadastrar</button>
+        {!loading && <button className='btn'>Cadastrar</button>}
+        {loading && (
+          <button className='btn' disabled>
+            Aguarde...
+          </button>)}
         {error && <p className='error'>{error}</p>}
       </form>
     </div>
