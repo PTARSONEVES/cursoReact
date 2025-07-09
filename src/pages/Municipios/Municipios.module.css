@@ -3,9 +3,9 @@
 }
 
 .municipios table {
-    margin-top: 2%;
-    margin-left: 20%;
+    margin-top: 1.5%;
 }
+
 .municipios table, th, td {
     border: 1px solid rgba(231, 228, 228, 0.952);
     border-collapse: collapse;

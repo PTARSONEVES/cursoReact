@@ -6,7 +6,7 @@ import styles from './Footer.module.css';
 const Footer = () => {
     return (
         <Navbar expand="lg" fixed="bottom" className="bg-body-tertiary" bg="dark" data-bs-theme="dark">
-            <Container>
+            <Container fluid>
                 <h3 className={styles.footer}>Referência de React</h3>
                 <p className={styles.footer}>CursoReact &copy; 2025</p>
             </Container>

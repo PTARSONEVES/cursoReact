@@ -5,9 +5,9 @@ import './App.css';
 
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
-import { useAuthetication } from './hooks/useAuthentication';
 // hooks
 import { useState, useEffect } from 'react';
+import { useAuthetication } from './hooks/useAuthentication';
 
 
 // Context
@@ -52,29 +52,29 @@ function App() {
   }
   return (
     <div className='App'>
-  {/*}    <AuthProvider>*/}
+      <AuthProvider value={{ user }}>
         <BrowserRouter>
           <Navbase />
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/about' element={<About />} />
-            <Route path='/ufs' element={<Ufs />} />
-            <Route path='/municipios/:munid/:ufid' element={<Municipios />} />
-            <Route path='/iss' element={<IssItems />} />
-            <Route path='/iss/subitem/:itemid' element={<IssSubitems />} />
-            <Route path='/iss/subitem/dnac/:itemid/:subitemid' element={<IssDnacs />} />
-            <Route path='/cnae/secao/:secaoid' element={<SecaoItems />} />
-            <Route path='/cnae/divisao/:divisaoid/:secaoid' element={<DivisaoItems />} />
-            <Route path='/cnae/grupo/:grupoid/:secaoid/:divisaoid' element={<GrupoItems />} />
-            <Route path='/cnae/c/classe/:classeid/:secaoid/:divisaoid/:grupoid' element={<ClasseItems />} />
-            <Route path='/cnae/subclasse/:subclasseid/:secaoid/:divisaoid/:grupoid/:classeid' element={<SubclasseItems />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
+            <Route path='/ufs' element={user ? <Ufs /> : <Navigate to='/login' />} />
+            <Route path='/municipios/:munid/:ufid' element={user ? <Municipios /> : <Navigate to='/login' />} />
+            <Route path='/iss' element={user ? <IssItems /> : <Navigate to='/login' />} />
+            <Route path='/iss/subitem/:itemid' element={user ? <IssSubitems /> : <Navigate to='/login' />} />
+            <Route path='/iss/subitem/dnac/:itemid/:subitemid' element={user ? <IssDnacs /> : <Navigate to='/login' />} />
+            <Route path='/cnae/secao/:secaoid' element={user ? <SecaoItems /> : <Navigate to='/login' />} />
+            <Route path='/cnae/divisao/:divisaoid/:secaoid' element={user ? <DivisaoItems /> : <Navigate to='/login' />} />
+            <Route path='/cnae/grupo/:grupoid/:secaoid/:divisaoid' element={user ? <GrupoItems /> : <Navigate to='/login' />} />
+            <Route path='/cnae/c/classe/:classeid/:secaoid/:divisaoid/:grupoid' element={user ? <ClasseItems /> : <Navigate to='/login' />} />
+            <Route path='/cnae/subclasse/:subclasseid/:secaoid/:divisaoid/:grupoid/:classeid' element={user ? <SubclasseItems /> : <Navigate to='/login' />} />
+            <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
+            <Route path='/register' element={!user ? <Register /> : <Navigate to='/' />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
           <Footer />
         </BrowserRouter>
-{/*}      </AuthProvider>*/}
+      </AuthProvider>
     </div>
   );
 }

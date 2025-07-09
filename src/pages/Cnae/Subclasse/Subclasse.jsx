@@ -1,6 +1,6 @@
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useFetch } from '../../../hooks/useFetch';
+import Table from 'react-bootstrap/Table';
 
 import styles from '../Cnae.module.css';
 
@@ -14,20 +14,26 @@ const SubclasseItems = () => {
         <h1>CNAE - Lista de Subclasses</h1>
         {loading && <p>carregando dados...</p>}
         {error && <p>{error}</p>}
-        <table className={styles.tblsubclasse}>
-          <tr>
-            <th>ID</th>
-            <th>CÓDIGO</th>
-            <th>DESCRIÇÃO</th>
-          </tr>
-          {items && items.map((item) => (
-            <tr key={item.id}>
-              <td className={styles.tribid}>{item.id}</td>
-              <td>{item.codsubclasse}</td>
-              <td className={styles.tribname}>{item.descrsubclasse}</td>
+        <Table responsive='sm' striped bordered hover variant="dark">
+        <thead>
+            <tr>
+              <th>ID</th>
+              <th>CÓDIGO</th>
+              <th>DESCRIÇÃO</th>
+              <th>Voltar</th>
             </tr>
-          ))}
-        </table>
+          </thead>
+          <tbody>
+            {items && items.map((item) => (
+              <tr key={item.id}>
+                <td className={styles.tribid}>{item.id}</td>
+                <td>{item.codsubclasse}</td>
+                <td className={styles.tribname}>{item.descrsubclasse}</td>
+                <td><Link to={'/cnae/c/classe/0/'+secaoid.toString()+'/'+divisaoid.toString()+'/'+grupoid.toString()}>Classe</Link></td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
       </div>
     </>
   )

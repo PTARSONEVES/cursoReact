@@ -1,6 +1,6 @@
-import {db} from '../firebase/config';
+// eslint-disable-next-line no-unused-vars
+import {db, auth} from '../firebase/config';
 import {
-    getAuth,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     updateProfile,
@@ -14,7 +14,7 @@ export const useAuthetication = () => {
     const [loading, setLoading] = useState(null);
     const [cancelled, setCancelled] = useState(false);
 
-    const auth = getAuth();
+//    const auth = getAuth();
 
     function checkIfIsCancelled() {
         if (cancelled) {
@@ -58,6 +58,41 @@ export const useAuthetication = () => {
         }
     };
 
+    // logout - sign out
+    const logout = () => {
+        console.log('aqui');
+        checkIfIsCancelled();
+        signOut(auth);
+    };
+
+    //login - sign in
+    const login = async(data) => {
+        checkIfIsCancelled();
+        setLoading(true);
+        setError(false);
+
+        try {
+            await signInWithEmailAndPassword(auth, data.email, data.password);
+            setLoading(false);
+        } catch (error) {
+
+            let systemErrorMessage;
+
+            if (error.message.includes('user-not-found')) {
+                systemErrorMessage = 'Usuário não encontrado.';
+            } else if (error.message.includes('wrong-password')) {
+                systemErrorMessage = 'Senha Incorreta.';
+            } else {
+                systemErrorMessage = 'Ocorreu um erro, por favor tente mais tarde.';
+            }
+
+            setError(systemErrorMessage);
+            setLoading(false);
+
+        }
+
+    }
+
     useEffect(() => {
         return () => setCancelled(true);
     }, []);
@@ -67,5 +102,7 @@ export const useAuthetication = () => {
         createUser,
         error,
         loading,
-    }
+        logout,
+        login,
+    };
 };

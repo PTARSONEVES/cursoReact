@@ -4,9 +4,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    color: bisque;
 /*    background-color: rgb(97, 95, 100);*/
 }
 
-.footer p, h3 {
-    color: bisque;
-}

@@ -4,7 +4,10 @@
 
 .uf table {
     margin-top: 2%;
-    margin-left: 30%;
+}
+
+.uf tr {
+    background-color: black !important;
 }
 
 .uf table, th, td {

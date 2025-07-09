@@ -1,5 +1,6 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useFetch } from '../../hooks/useFetch';
+import Table from 'react-bootstrap/Table';
 
 import styles from  './Municipios.module.css';
 
@@ -26,32 +27,38 @@ const Municipios = () => {
         <h1>Municipios da Federação</h1>
         {loading && <p>carregando dados...</p>}
         {error && <p>{error}</p>}
-        <table>
-          <tr>
-            <th>ID</th>
-            <th>IBGE AMPLO</th>
-            <th>IBGE CURTO</th>
-            <th>NOME</th>
-            <th>UF</th>
-            <th>LEI</th>
-            <th>DATA CRIAÇÃO</th>
-            <th>DATA INSTALAÇÃO</th>
-            <th>DDD</th>
-          </tr>
-          {items && items.map((municipio) => (
-            <tr key={municipio.id}>
-              <td className={styles.municipioid}>{municipio.id}</td>
-              <td>{municipio.ibgefull}</td>
-              <td>{municipio.ibgeshort}</td>
-              <td className={styles.municipioname}>{municipio.cityname}</td>
-              <td>{municipio.Tbsbruf.uf}</td>
-              <td className={styles.citylaw}>{municipio.citylaw}</td>
-              <td>{convData(municipio.datelaw)}</td>
-              <td>{convData(municipio.dateinstall)}</td>
-              <td>{municipio.cityddd}</td>
+        <Table responsive='sm' striped bordered hover variant="dark">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>IBGE AMPLO</th>
+              <th>IBGE CURTO</th>
+              <th>NOME</th>
+              <th>UF</th>
+              <th>LEI</th>
+              <th>DATA CRIAÇÃO</th>
+              <th>DATA INSTALAÇÃO</th>
+              <th>DDD</th>
+              <th>Voltar</th>
             </tr>
-          ))}
-        </table>
+          </thead>
+          <tbody>
+            {items && items.map((municipio) => (
+              <tr key={municipio.id}>
+                <td className={styles.municipioid}>{municipio.id}</td>
+                <td>{municipio.ibgefull}</td>
+                <td>{municipio.ibgeshort}</td>
+                <td className={styles.municipioname}>{municipio.cityname}</td>
+                <td>{municipio.Tbsbruf.uf}</td>
+                <td className={styles.citylaw}>{municipio.citylaw}</td>
+                <td>{convData(municipio.datelaw)}</td>
+                <td>{convData(municipio.dateinstall)}</td>
+                <td>{municipio.cityddd}</td>
+                <td><Link to={'/ufs/'}>UF's</Link></td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
       </div>
     </>
   )
