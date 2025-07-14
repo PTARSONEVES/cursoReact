@@ -86,6 +86,9 @@ const Navbase = () => {
                   <NavDropdown.Item>
                     <NavLink to='/cnae/secao/0' className={styles.navbar}>CNAE's</NavLink>
                   </NavDropdown.Item>
+                  <NavDropdown.Item>
+                    <NavLink to='/cnae/secao/0' className={styles.navbar}>Flats do Ancorar</NavLink>
+                  </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="#action/3.4">
                     Separated link
