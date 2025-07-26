@@ -23,6 +23,8 @@ import IssSubitems from './pages/Iss/Subitems/IssSubitems';
 import IssDnacs from './pages/Iss/IssDnacs/issDnacs';
 import SecaoItems from './pages/Cnae/Secao/Secao';
 import NotFound from './pages/NotFound/NotFound';
+import TbsFlats from './pages/Flats/Total/FlatAll';
+import TblPessoas from './pages/Pessoas/Pessoas/Pessoa';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 
@@ -68,6 +70,8 @@ function App() {
             <Route path='/cnae/grupo/:grupoid/:secaoid/:divisaoid' element={user ? <GrupoItems /> : <Navigate to='/login' />} />
             <Route path='/cnae/c/classe/:classeid/:secaoid/:divisaoid/:grupoid' element={user ? <ClasseItems /> : <Navigate to='/login' />} />
             <Route path='/cnae/subclasse/:subclasseid/:secaoid/:divisaoid/:grupoid/:classeid' element={user ? <SubclasseItems /> : <Navigate to='/login' />} />
+            <Route path='/tbsflats' element={user ? <TbsFlats /> : <Navigate to='/login' />} />
+            <Route path='/pessoas' element={user ? <TblPessoas /> : <Navigate to='/login' />} />
             <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
             <Route path='/register' element={!user ? <Register /> : <Navigate to='/' />} />
             <Route path='*' element={<NotFound />} />

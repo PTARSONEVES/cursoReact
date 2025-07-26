@@ -63,6 +63,9 @@ const Navbase = () => {
                     <NavLink to='/' className={styles.navbar}>Itens de Manutenção</NavLink>
                   </NavDropdown.Item>
                   <NavDropdown.Item>
+                    <NavLink to='/pessoas' className={styles.navbar}>Pessoas</NavLink>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item>
                     <NavLink to='/' className={styles.navbar}>Usuários</NavLink>
                   </NavDropdown.Item>
                   <NavDropdown className={styles.navbar} title="Produtos">
@@ -87,7 +90,7 @@ const Navbase = () => {
                     <NavLink to='/cnae/secao/0' className={styles.navbar}>CNAE's</NavLink>
                   </NavDropdown.Item>
                   <NavDropdown.Item>
-                    <NavLink to='/cnae/secao/0' className={styles.navbar}>Flats do Ancorar</NavLink>
+                    <NavLink to='/tbsflats' className={styles.navbar}>Flats do Ancorar</NavLink>
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="#action/3.4">

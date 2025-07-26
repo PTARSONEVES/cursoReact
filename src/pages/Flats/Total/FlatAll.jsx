@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import { useFetch } from '../../../hooks/useFetch';
 import Table from 'react-bootstrap/Table';
 
-import styles from  './Flat.module.css';
+import styles from  '../Flat.module.css';
 
-const Flats = () => {
-    const url = 'http://localhost:3001/flats';
+const TbsFlats = () => {
+    const url = 'http://localhost:3001/tbsflats';
     const { data: items, loading, error } = useFetch(url);
   return (
     <>
@@ -24,20 +24,29 @@ const Flats = () => {
               <th>TIPO</th>
               <th>ÁREA</th>
               <th>QUARTOS</th>
+              <th>SALAS</th>
+              <th>VARANDAS</th>
+              <th>WC'S</th>
+              <th>COZINHAS</th>
+              <th>GARAGENS</th>
             </tr>
           </thead>
           <tbody>
             {items && items.map((flat) => (
               <tr key={flat.id}>
                 <td className={styles.flatid}>{flat.id}</td>
-                <td>{flat.flatname}</td>
+                <td>{flat.flatnome}</td>
                 <td>{flat.flatbloco}</td>
                 <td>{flat.flatpiso}</td>
                 <td>{flat.flatnum}</td>
-                <td className={styles.flat}>{flat.tipoflatid}</td>
-                <td>{flat.Tbspai.paisname}</td>
-                <td>{flat.Tbspai.Tbscontinente.namecontinente}</td>
-                <td><Link to={'/municipios/0/'+flat.id.toString()}>Municípios</Link></td>
+                <td className={styles.flatid}>{flat.tbstipoflatid}</td>
+                <td className={styles.flatid}>{flat.Tbstipoflat.areaflat}</td>
+                <td className={styles.flatid}>{flat.Tbstipoflat.quartosflat}</td>
+                <td className={styles.flatid}>{flat.Tbstipoflat.salasflat}</td>
+                <td className={styles.flatid}>{flat.Tbstipoflat.varandasflat}</td>
+                <td className={styles.flatid}>{flat.Tbstipoflat.wcsflat}</td>
+                <td className={styles.flatid}>{flat.Tbstipoflat.cozinhasflat}</td>
+                <td className={styles.flatid}>{flat.Tbstipoflat.garagensflat}</td>
               </tr>
             ))}
           </tbody>
@@ -47,4 +56,4 @@ const Flats = () => {
   )
 }
 
-export default Flats;
+export default TbsFlats;
