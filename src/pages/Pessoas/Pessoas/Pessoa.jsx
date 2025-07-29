@@ -5,6 +5,16 @@ import Table from 'react-bootstrap/Table';
 import styles from  '../Pessoa.module.css';
 
 const TblPessoas = () => {
+
+    const convData = (value) => {
+      if(value == null) {
+        return null;
+      } else {
+        let vll = value.toString();
+        return (vll.slice(8,10)+'.'+vll.slice(5,7)+'.'+vll.slice(0,4));
+      }
+    }
+
     const url = 'http://localhost:3001/pessoas';
     const { data: items, loading, error } = useFetch(url);
   return (
@@ -23,26 +33,70 @@ const TblPessoas = () => {
               <th>CNPJ</th>
               <th>NASCIMENTO</th>
               <th>EMAIL's</th>
-{/*
-              <th>QUARTOS</th>
-              <th>SALAS</th>
-              <th>VARANDAS</th>
-              <th>WC'S</th>
-              <th>COZINHAS</th>
-              <th>GARAGENS</th>
-*/}
+              <th>MÍDIAS</th>
+              <th>INTERAÇÃO</th>
               </tr>
           </thead>
           <tbody>
             {items && items.map((pessoa) => (
                 <tr key={pessoa.id}>
                     <td className={styles.pessoaid}>{pessoa.id}</td>
-                    <td>{pessoa.nomepessoa}</td>
-                    <td>{pessoa.Tbspessoatipo.tipopessoa}</td>
+                    <td className={styles.pessoaname}>{pessoa.nomepessoa}</td>
+                    <td>Pessoa {pessoa.Pessoatpo.tipopessoa}</td>
                     <td>{pessoa.cpfpessoa}</td>
                     <td>{pessoa.cnpjpessoa}</td>
-                    <td>{pessoa.nascpessoa}</td>
-                    <td>{pessoa.Tblemails.email}</td>
+                    <td>{convData(pessoa.nascpessoa)}</td>
+                    <td>{pessoa.Emails.email}
+                      <Table responsive='sm' striped bordered hover variant="dark">
+                        <thead>
+                          <tr>
+                            <th>EMAIL</th>
+                            <th>VALIDADO</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {pessoa.Emails && pessoa.Emails.map((email) => (
+                              <tr key={email.id}>
+                                  <td className={styles.pessoaname}>{email.email}</td>
+                                  <td className={styles.pessoaid}>{email.validado ? 'Sim' : 'Não'}</td>
+                              </tr>
+                          ))}
+                        </tbody>
+                      </Table>
+                    </td>
+                    <td>{pessoa.Midia.midia}
+                      <Table responsive='sm' striped bordered hover variant="dark">
+                        <thead>
+                          <tr>
+                            <th>DESCRIÇÃO</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {pessoa.Midia && pessoa.Midia.map((midia) => (
+                              <tr key={midia.id}>
+                                  <td className={styles.pessoaname}>{midia.Midiatpo.namemidia}</td>
+                              </tr>
+                          ))}
+                        </tbody>
+                      </Table>
+                    </td>
+                    <td>{pessoa.Users.user}
+                      <Table responsive='sm' striped bordered hover variant="dark">
+                        <thead>
+                          <tr>
+                            <th>PERFIL</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {pessoa.Users && pessoa.Users.map((user) => (
+                              <tr key={user.id}>
+                                  <td className={styles.pessoaname}>{user.Usertype.tipouser}</td>
+                              </tr>
+                          ))}
+                        </tbody>
+                      </Table>
+
+                    </td>
 {/*
                     <td>{pessoa.nascpessoa}</td>
                     <td className={styles.pessoaid}>{pessoa.Tbstipopessoa.areapessoa}</td>
