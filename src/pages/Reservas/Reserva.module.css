@@ -1,0 +1,38 @@
+.reserva {
+    text-align: center;
+}
+
+.reserva table {
+    margin-top: 2%;
+    margin-bottom: 3.5%;
+}
+
+.reserva tr {
+    background-color: black !important;
+}
+
+.reserva table, th, td {
+    border: 1px solid rgba(231, 228, 228, 0.952);
+    border-collapse: collapse;
+}
+
+.reserva th {
+    color: chocolate;
+    padding: 10px;
+}
+
+.reserva td {
+    color:blanchedalmond;
+    padding-left: 10px;
+    padding-right: 10px;
+    align-items: center;
+}
+
+.reservaid {
+    text-align: right;
+}
+
+.reservaname {
+    text-align: left;
+}
+

@@ -23,10 +23,11 @@ import IssSubitems from './pages/Iss/Subitems/IssSubitems';
 import IssDnacs from './pages/Iss/IssDnacs/issDnacs';
 import SecaoItems from './pages/Cnae/Secao/Secao';
 import NotFound from './pages/NotFound/NotFound';
-import TbsFlats from './pages/Flats/Total/FlatAll';
-import TblPessoas from './pages/Pessoas/Pessoas/Pessoa';
+import Flats from './pages/Flats/Flat';
+import Pessoas from './pages/Pessoas/Pessoas/Pessoa';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
+import Reserva from './pages/Reservas/Reserva';
 
 // Componentes
 import Navbase from './components/Navbar/Navbar';
@@ -70,10 +71,11 @@ function App() {
             <Route path='/cnae/grupo/:grupoid/:secaoid/:divisaoid' element={user ? <GrupoItems /> : <Navigate to='/login' />} />
             <Route path='/cnae/c/classe/:classeid/:secaoid/:divisaoid/:grupoid' element={user ? <ClasseItems /> : <Navigate to='/login' />} />
             <Route path='/cnae/subclasse/:subclasseid/:secaoid/:divisaoid/:grupoid/:classeid' element={user ? <SubclasseItems /> : <Navigate to='/login' />} />
-            <Route path='/tbsflats' element={user ? <TbsFlats /> : <Navigate to='/login' />} />
-            <Route path='/pessoas' element={user ? <TblPessoas /> : <Navigate to='/login' />} />
+            <Route path='/flats' element={user ? <Flats /> : <Navigate to='/login' />} />
+            <Route path='/pessoas' element={user ? <Pessoas /> : <Navigate to='/login' />} />
             <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
             <Route path='/register' element={!user ? <Register /> : <Navigate to='/' />} />
+            <Route path='/reservas' element={user ? <Reserva /> : <Navigate to='/' />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
           <Footer />

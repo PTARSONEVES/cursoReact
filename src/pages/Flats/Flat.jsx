@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import { useFetch } from '../../../hooks/useFetch';
+import { useFetch } from '../../hooks/useFetch';
 import Table from 'react-bootstrap/Table';
 
-import styles from  '../Flat.module.css';
+import styles from  './Flat.module.css';
 
-const TbsFlats = () => {
-    const url = 'http://localhost:3001/tbsflats';
+const Flats = () => {
+    const url = 'http://localhost:3001/flats';
     const { data: items, loading, error } = useFetch(url);
   return (
     <>
@@ -39,14 +39,14 @@ const TbsFlats = () => {
                 <td>{flat.flatbloco}</td>
                 <td>{flat.flatpiso}</td>
                 <td>{flat.flatnum}</td>
-                <td className={styles.flatid}>{flat.tbstipoflatid}</td>
-                <td className={styles.flatid}>{flat.Tbstipoflat.areaflat}</td>
-                <td className={styles.flatid}>{flat.Tbstipoflat.quartosflat}</td>
-                <td className={styles.flatid}>{flat.Tbstipoflat.salasflat}</td>
-                <td className={styles.flatid}>{flat.Tbstipoflat.varandasflat}</td>
-                <td className={styles.flatid}>{flat.Tbstipoflat.wcsflat}</td>
-                <td className={styles.flatid}>{flat.Tbstipoflat.cozinhasflat}</td>
-                <td className={styles.flatid}>{flat.Tbstipoflat.garagensflat}</td>
+                <td className={styles.flatid}>{flat.flattpoid}</td>
+                <td className={styles.flatid}>{flat.Flattpo.areaflat}</td>
+                <td className={styles.flatid}>{flat.Flattpo.quartosflat}</td>
+                <td className={styles.flatid}>{flat.Flattpo.salasflat}</td>
+                <td className={styles.flatid}>{flat.Flattpo.varandasflat}</td>
+                <td className={styles.flatid}>{flat.Flattpo.wcsflat}</td>
+                <td className={styles.flatid}>{flat.Flattpo.cozinhasflat}</td>
+                <td className={styles.flatid}>{flat.Flattpo.garagensflat}</td>
               </tr>
             ))}
           </tbody>
@@ -56,4 +56,4 @@ const TbsFlats = () => {
   )
 }
 
-export default TbsFlats;
+export default Flats;

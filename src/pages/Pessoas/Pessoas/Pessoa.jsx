@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table';
 
 import styles from  '../Pessoa.module.css';
 
-const TblPessoas = () => {
+const Pessoa = () => {
 
     const convData = (value) => {
       if(value == null) {
@@ -116,4 +116,4 @@ const TblPessoas = () => {
   )
 }
 
-export default TblPessoas;
+export default Pessoa;

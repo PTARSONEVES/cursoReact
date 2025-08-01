@@ -36,9 +36,6 @@ const Navbase = () => {
             {user &&(
              <>
                 <NavDropdown className={styles.navbar} title="Hospedagem">
-                  <NavDropdown.Item>
-                    <NavLink to='/' className={styles.navbar}>Flats Alocados</NavLink>
-                  </NavDropdown.Item>
                   <NavDropdown className={styles.navbar} title="Reservas">
                     <NavDropdown.Item>
                       <NavLink to='/' className={styles.navbar}>Cadastrar</NavLink>
@@ -47,7 +44,7 @@ const Navbase = () => {
                       <NavLink to='/' className={styles.navbar}>Gerenciar</NavLink>
                     </NavDropdown.Item>
                     <NavDropdown.Item>
-                      <NavLink to='/' className={styles.navbar}>Visualizar</NavLink>
+                      <NavLink to='/reservas' className={styles.navbar}>Visualizar</NavLink>
                     </NavDropdown.Item>
                   </NavDropdown>
                   <NavDropdown.Divider />
@@ -57,7 +54,7 @@ const Navbase = () => {
                 </NavDropdown>
                 <NavDropdown className={styles.navbar} title="Cadastros do Sistema">
                   <NavDropdown.Item>
-                    <NavLink to='/' className={styles.navbar}>Flats</NavLink>
+                    <NavLink to='/flats' className={styles.navbar}>Flats</NavLink>
                   </NavDropdown.Item>
                   <NavDropdown.Item>
                     <NavLink to='/' className={styles.navbar}>Itens de Manutenção</NavLink>
@@ -88,9 +85,6 @@ const Navbase = () => {
                   </NavDropdown.Item>
                   <NavDropdown.Item>
                     <NavLink to='/cnae/secao/0' className={styles.navbar}>CNAE's</NavLink>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item>
-                    <NavLink to='/tbsflats' className={styles.navbar}>Flats do Ancorar</NavLink>
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="#action/3.4">
