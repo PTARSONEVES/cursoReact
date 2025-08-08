@@ -22,19 +22,20 @@ import IssItems from './pages/Iss/IssItems/IssItems';
 import IssSubitems from './pages/Iss/Subitems/IssSubitems';
 import IssDnacs from './pages/Iss/IssDnacs/issDnacs';
 import SecaoItems from './pages/Cnae/Secao/Secao';
+import DivisaoItems from './pages/Cnae/Divisao/DIvisao';
+import GrupoItems from './pages/Cnae/Grupo/Grupo';
+import ClasseItems from './pages/Cnae/Classe/Classe';
+import SubclasseItems from './pages/Cnae/Subclasse/Subclasse';
 import NotFound from './pages/NotFound/NotFound';
 import Flats from './pages/Flats/Flat';
 import Pessoas from './pages/Pessoas/Pessoas/Pessoa';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Reserva from './pages/Reservas/Reserva';
+import CadReserva from './pages/Reservas/CadReserva';
 
 // Componentes
 import Navbase from './components/Navbar/Navbar';
-import DivisaoItems from './pages/Cnae/Divisao/DIvisao';
-import GrupoItems from './pages/Cnae/Grupo/Grupo';
-import ClasseItems from './pages/Cnae/Classe/Classe';
-import SubclasseItems from './pages/Cnae/Subclasse/Subclasse';
 import Footer from './components/Footer/Footer';
 
 function App() {
@@ -75,6 +76,7 @@ function App() {
             <Route path='/pessoas' element={user ? <Pessoas /> : <Navigate to='/login' />} />
             <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
             <Route path='/register' element={!user ? <Register /> : <Navigate to='/' />} />
+            <Route path='/cadreservas' element={user ? <CadReserva /> : <Navigate to='/' />} />
             <Route path='/reservas' element={user ? <Reserva /> : <Navigate to='/' />} />
             <Route path='*' element={<NotFound />} />
           </Routes>

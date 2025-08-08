@@ -54,7 +54,7 @@ const Reservas = () => {
                     <td className={styles.reservaid}>{reserva.vlrpago}</td>
                     <td className={styles.reservaid}>{reserva.Sitreserva.nomstatus}</td>
                     <td className={styles.reservaname}>{reserva.observacao}</td>
-{/*}
+{/*
                     <td>{reserva.Emails.email}
                       <Table responsive='sm' striped bordered hover variant="dark">
                         <thead>

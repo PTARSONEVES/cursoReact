@@ -1,10 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import Button from "react-bootstrap/Button";
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Button, Container, Form, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import styles from './Navbar.module.css';
 
 import { useAuthetication } from '../../hooks/useAuthentication';
@@ -38,7 +33,7 @@ const Navbase = () => {
                 <NavDropdown className={styles.navbar} title="Hospedagem">
                   <NavDropdown className={styles.navbar} title="Reservas">
                     <NavDropdown.Item>
-                      <NavLink to='/' className={styles.navbar}>Cadastrar</NavLink>
+                      <NavLink to='/cadreservas' className={styles.navbar}>Cadastrar</NavLink>
                     </NavDropdown.Item>
                     <NavDropdown.Item>
                       <NavLink to='/' className={styles.navbar}>Gerenciar</NavLink>

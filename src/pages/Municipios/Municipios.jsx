@@ -54,7 +54,7 @@ const Municipios = () => {
                 <td>{convData(municipio.datelaw)}</td>
                 <td>{convData(municipio.dateinstall)}</td>
                 <td>{municipio.cityddd}</td>
-                <td><Link to={'/ufs/'}>UF's</Link></td>
+                <td><Link to={'/ufs/'}><i class="bi bi-arrow-right-circle-fill">UF's</i></Link></td>
               </tr>
             ))}
           </tbody>
