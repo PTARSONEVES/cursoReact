@@ -62,7 +62,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/about' element={<About />} />
-            <Route path='/ufs' element={user ? <Ufs /> : <Navigate to='/login' />} />
+            <Route path='/ufs/:id/:paisid' element={user ? <Ufs /> : <Navigate to='/login' />} />
             <Route path='/municipios/:munid/:ufid' element={user ? <Municipios /> : <Navigate to='/login' />} />
             <Route path='/iss' element={user ? <IssItems /> : <Navigate to='/login' />} />
             <Route path='/iss/subitem/:itemid' element={user ? <IssSubitems /> : <Navigate to='/login' />} />

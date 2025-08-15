@@ -5,7 +5,7 @@ import Table from 'react-bootstrap/Table';
 import styles from  './Ufs.module.css';
 
 const Ufs = () => {
-    const url = 'http://localhost:3001/ufs';
+    const url = 'http://localhost:3001/ufs/0/103';
     const { data: items, loading, error } = useFetch(url);
   return (
     <>
@@ -20,6 +20,7 @@ const Ufs = () => {
               <th>CÓDIGO</th>
               <th>SIGLA</th>
               <th>NOME</th>
+              <th>REGIÃO</th>
               <th>PAÍS</th>
               <th>CONTINENTE</th>
               <th>MUNICIPIOS</th>
@@ -32,8 +33,9 @@ const Ufs = () => {
                 <td>{uf.coduf}</td>
                 <td>{uf.uf}</td>
                 <td className={styles.ufname}>{uf.ufname}</td>
-                <td>{uf.Tbspai.paisname}</td>
-                <td>{uf.Tbspai.Tbscontinente.namecontinente}</td>
+                <td className={styles.ufname}>{uf.Regiao.regiaoname}</td>
+                <td className={styles.ufname}>{uf.Pai.paisname}</td>
+                <td className={styles.ufname}>{uf.Pai.Continente.namecontinente}</td>
                 <td><Link to={'/municipios/0/'+uf.id.toString()}>Municípios</Link></td>
               </tr>
             ))}

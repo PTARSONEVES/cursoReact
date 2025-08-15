@@ -73,7 +73,7 @@ const Navbase = () => {
                 </NavDropdown>
                 <NavDropdown className={styles.navbar} title="Tabelas do Sistema">
                   <NavDropdown.Item>
-                    <NavLink to='/ufs' className={styles.navbar}>UF's</NavLink>
+                    <NavLink to='/ufs/0/103' className={styles.navbar}>UF's</NavLink>
                   </NavDropdown.Item>
                   <NavDropdown.Item>
                     <NavLink to='/iss' className={styles.navbar}>Serviços</NavLink>
