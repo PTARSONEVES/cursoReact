@@ -12,71 +12,57 @@ const CadReservas = () => {
     const [checkin, setCheckin] = useState(dia);
     const [checkout, setCheckout] = useState(checkin.setDate(dia.getDate()+1));
 
-    console.log('dia: ',dia);
-    console.log('in: ',checkin);
-    console.log('out: ',checkout);
-
     function Url(rota) {
         const urlBase = 'http://localhost:3001/'
         return urlBase+rota
     }
 
-    function Paises() {
-        const { data: items, loading, error } = useFetch(Url(urlPais));
+    function Consultas(urlConsulta) {
+        const { data: items, loading, error } = useFetch(Url(urlConsulta));
         return {items, loading, error }
-    }
-
-    function Ufs() {
-        const { data: items, loading, error } = useFetch(Url(urlUf));
-        return {items, loading, error }
-    }
-
-    function Cidades() {
-        const { data: items, loading, error } = useFetch(Url(urlCity));
-        return {items, loading, error}
     }
 
     let paisItems = [];
     let ufItems = [];
     let cityItems = [];
 
-    const paises = Paises();
+    const paises = Consultas(urlPais);
     if (paises !== null) {
         paisItems = paises.items;
     }
 
-    const ufs = Ufs();
+    const ufs = Consultas(urlUf);
     if (ufs !== null) {
         ufItems = ufs.items
     };
 
-    const cidades = Cidades();
+    const cidades = Consultas(urlCity);
     if (cidades !== null) {
         cityItems = cidades.items
     };
 
-    const handleChangePais = (e) => {
+    const handleChangeSelect = (e) => {
         e.preventDefault();
-        let codpais = e.currentTarget.value.toString();
-        setUrlUf('ufs/0/'+codpais);
-    };
-
-    const handleChangeCity = (e) => {
-        e.preventDefault();
-        let codmun = e.currentTarget.value.toString();
-        setCheckin(checkin);
-        setUrlCity('municipios/0/'+codmun);
-    };
-
-    const handleChangeCheckin = (e) => {
-        e.preventDefault();
-        setCheckin(checkin);
-        setCheckout(checkin.getDate()+1);
-    };
-
-    const handleChangeCheckout = (e) => {
-        e.preventDefault();
-        setCheckout(checkout);
+        let opcao = e.currentTarget.value.toString();
+        let campo = e.currentTarget.name;
+        switch (campo) {
+            case 'paises':
+                setUrlUf('ufs/0/'+opcao);
+                break;
+            case 'uf':
+                setUrlCity('municipios/0/'+opcao);
+                break;
+            case 'city':
+//                setUrlCity('municipios/0/'+opcao);
+                break;
+            case 'checkin':
+                setCheckin(checkin);
+                break;
+            case 'checkout':
+                setCheckout(checkout);
+                break;
+            default: break;
+        }
     };
 
     return (
@@ -90,13 +76,13 @@ const CadReservas = () => {
                 <Col md>
                     <Form.Group className="mb-3" controlId="formBasicDate">
                         <Form.Label>Data de chegada</Form.Label>
-                        <Form.Control name="checkin" type="date" placeholder='Check-in' onChange={handleChangeCheckin}/>
+                        <Form.Control name="checkin" type="date" placeholder='Check-in' onChange={handleChangeSelect}/>
                     </Form.Group>
                 </Col>
                 <Col md>
                     <Form.Group className="mb-3" controlId="formBasicDate">
                         <Form.Label>Data de saida</Form.Label>
-                        <Form.Control name="checkout" type="date" placeholder='Check-out' onChange={handleChangeCheckout}/>
+                        <Form.Control name="checkout" type="date" placeholder='Check-out' onChange={handleChangeSelect}/>
                     </Form.Group>
                 </Col>
             </Row>
@@ -104,7 +90,7 @@ const CadReservas = () => {
                 <Col md>
                     <Form.Group className='mb-3'>
                         <Form.Label>Pais de Origem</Form.Label>
-                        <Form.Select onChange={handleChangePais}>
+                        <Form.Select onChange={handleChangeSelect} name="paises">
                             <option selected>Escolha o País</option>
                             {paisItems && paisItems.map((paisItem, i) =>
                                 <option obj={paisItem} key={i} value={paisItem.id}>{paisItem.paisname}</option>
@@ -115,7 +101,7 @@ const CadReservas = () => {
                 <Col md>
                     <Form.Group className='mb-3'>
                         <Form.Label>Estado de Origem</Form.Label>
-                        <Form.Select onChange={handleChangeCity}>
+                        <Form.Select onChange={handleChangeSelect} name="uf">
                             <option selected>Escolha a UF</option>
                             {ufItems && ufItems.map((ufItem, i) =>
                                 <option obj={ufItem} key={i} value={ufItem.id}>{ufItem.ufname}</option>
@@ -126,7 +112,7 @@ const CadReservas = () => {
                 <Col md>
                     <Form.Group className='mb-3'>
                         <Form.Label>Cidade</Form.Label>
-                        <Form.Select>
+                        <Form.Select onChange={handleChangeSelect} name="city">
                             <option selected>Escolha o Município</option>
                             {cityItems && cityItems.map((cityItem, i) =>
                                 <option obj={cityItem} key={i} value={cityItem.id}>{cityItem.cityname}</option>
